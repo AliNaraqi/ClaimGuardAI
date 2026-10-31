@@ -26,7 +26,28 @@ jobs:
 
       - name: Test (pytest)
         run: pytest tests/ -v
-        # Note: the licensed Kaggle dataset (data/raw/fraud_oracle.csv) and trained
-        # model artifacts (models/*.joblib) are intentionally not committed to this
-        # repo. Tests that require them are marked with @requires_real_dataset /
-        # @requires_trained_model (see tests/conftest.py) and skip cleanly here.
+        # Note: fraud_oracle.csv is committed (redistribution confirmed under the
+        # dataset's Kaggle license) so @requires_real_dataset tests run for real here.
+        # Trained model artifacts (models/*.joblib) are still not committed — tests
+        # marked @requires_trained_model (see tests/conftest.py) skip cleanly.
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build dashboard image
+        run: docker build -t claimguard-ai .
+
+      - name: Smoke-test the container
+        run: |
+          docker run -d --name claimguard -p 8501:8501 claimguard-ai
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:8501/_stcore/health > /dev/null; then
+              echo "Dashboard is healthy"; exit 0
+            fi
+            sleep 2
+          done
+          echo "Dashboard did not become healthy in time"
+          docker logs claimguard
+          exit 1
