@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint (ruff)
+        run: ruff check src/ app/ tests/
+
+      - name: Test (pytest)
+        run: pytest tests/ -v
+        # Note: the licensed Kaggle dataset (data/raw/fraud_oracle.csv) and trained
+        # model artifacts (models/*.joblib) are intentionally not committed to this
+        # repo. Tests that require them are marked with @requires_real_dataset /
+        # @requires_trained_model (see tests/conftest.py) and skip cleanly here.

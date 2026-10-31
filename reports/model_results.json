@@ -1,0 +1,85 @@
+{
+  "selected_model": "XGBoost",
+  "random_state": 42,
+  "split": {
+    "train_n": 9252,
+    "val_n": 3084,
+    "test_n": 3084
+  },
+  "validation_metrics": {
+    "logistic_regression": {
+      "threshold": 0.5,
+      "roc_auc": 0.7977473763118441,
+      "pr_auc": 0.15367292382036443,
+      "precision": 0.13321647677475898,
+      "recall": 0.8260869565217391,
+      "f1": 0.22943396226415094,
+      "brier_score": 0.17731063218066542,
+      "confusion_matrix": {
+        "tn": 1911,
+        "fp": 989,
+        "fn": 32,
+        "tp": 152
+      },
+      "positive_prevalence": 0.05966277561608301
+    },
+    "xgboost": {
+      "threshold": 0.5,
+      "roc_auc": 0.8424812593703149,
+      "pr_auc": 0.2553434663491514,
+      "precision": 0.1732186732186732,
+      "recall": 0.7663043478260869,
+      "f1": 0.28256513026052105,
+      "brier_score": 0.12743592229518924,
+      "confusion_matrix": {
+        "tn": 2227,
+        "fp": 673,
+        "fn": 43,
+        "tp": 141
+      },
+      "positive_prevalence": 0.05966277561608301
+    }
+  },
+  "test_metrics_selected_model": {
+    "threshold": 0.5,
+    "roc_auc": 0.8331633461678305,
+    "pr_auc": 0.24192396783908612,
+    "precision": 0.1630952380952381,
+    "recall": 0.7405405405405405,
+    "f1": 0.2673170731707317,
+    "brier_score": 0.1342959897702306,
+    "confusion_matrix": {
+      "tn": 2196,
+      "fp": 703,
+      "fn": 48,
+      "tp": 137
+    },
+    "positive_prevalence": 0.05998702983138781
+  },
+  "precision_recall_at_k_test": [
+    {
+      "k_fraction": 0.05,
+      "k_n_claims": 154,
+      "precision_at_k": 0.24675324675324675,
+      "recall_at_k": 0.20540540540540542,
+      "flagged_in_top_k": 38,
+      "total_flagged": 185
+    },
+    {
+      "k_fraction": 0.1,
+      "k_n_claims": 308,
+      "precision_at_k": 0.19805194805194806,
+      "recall_at_k": 0.32972972972972975,
+      "flagged_in_top_k": 61,
+      "total_flagged": 185
+    },
+    {
+      "k_fraction": 0.2,
+      "k_n_claims": 617,
+      "precision_at_k": 0.18314424635332252,
+      "recall_at_k": 0.6108108108108108,
+      "flagged_in_top_k": 113,
+      "total_flagged": 185
+    }
+  ]
+}

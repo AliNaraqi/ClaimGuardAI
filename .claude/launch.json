@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "claimguard-dashboard",
+      "runtimeExecutable": "/Users/apple/Downloads/My Files/My File/Projects/ClaimGaurdAI/.venv/bin/streamlit",
+      "runtimeArgs": ["run", "/Users/apple/Downloads/My Files/My File/Projects/ClaimGaurdAI/app/dashboard/app.py", "--server.headless", "true"],
+      "port": 8501
+    }
+  ]
+}

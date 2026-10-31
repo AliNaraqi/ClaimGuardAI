@@ -1,0 +1,35 @@
+# Data (do not commit third-party dataset files)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model artifacts (top-level only — src/models/ is source code, not an artifact dir)
+*.pkl
+*.joblib
+/models/
+
+# Environment / secrets
+.env
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# MLflow
+mlruns/
