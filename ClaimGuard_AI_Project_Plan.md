@@ -1,8 +1,7 @@
 # ClaimGuard AI — Full Project Specification & Roadmap
 
-**Project:** Explainable Insurance Claims Risk & Decision Intelligence Platform  
-**Version:** Portfolio-ready MVP (v1.0)  
-**Target timeline:** 4 weeks, approximately 8–12 hours per week  
+**Project:** Explainable Insurance Claims Risk & Decision Intelligence Platform   
+**Target timeline:** 4 weeks
 **Primary audience:** Data Scientist, Data Analyst, Applied ML Engineer, Risk Analytics and Insurance Analytics recruiters  
 **Deliverable:** Public GitHub repository with reproducible ML experiments, an interactive dashboard, documented model limitations and a demo  
 **Status:** Planning specification — not a claim that the system or trained models are complete.
