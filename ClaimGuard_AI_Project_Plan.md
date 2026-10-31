@@ -1,8 +1,7 @@
 # ClaimGuard AI — Full Project Specification & Roadmap
 
-**Project:** Explainable Insurance Claims Risk & Decision Intelligence Platform  
-**Version:** Portfolio-ready MVP (v1.0)  
-**Target timeline:** 4 weeks, approximately 8–12 hours per week  
+**Project:** Explainable Insurance Claims Risk & Decision Intelligence Platform   
+**Target timeline:** 4 weeks
 **Primary audience:** Data Scientist, Data Analyst, Applied ML Engineer, Risk Analytics and Insurance Analytics recruiters  
 **Deliverable:** Public GitHub repository with reproducible ML experiments, an interactive dashboard, documented model limitations and a demo  
 **Status:** Planning specification — not a claim that the system or trained models are complete.
@@ -35,7 +34,7 @@ ClaimGuard AI is an analyst-facing insurance-claims decision-support application
 - **Data type:** historical vehicle insurance claim, policy and incident fields.
 - **Use:** supervised binary classification, class-imbalance assessment, risk ranking, investigation dashboard and explanations.
 - **Caution:** older dataset; inspect provenance, usage rights, sensitive attributes, time-related leakage, and whether labels actually indicate confirmed fraud. Do not interpret the risk scores as calibrated for a current insurer.
-- **Access:** Kaggle may require a free account and acceptance of dataset conditions. Check the license before redistributing the CSV in GitHub.
+
 
 **Recommendation:** Make this the single primary supervised dataset for MVP. Its larger size makes a more useful portfolio demonstration than a 1,000-row alternative, though it is still not representative of modern claims.
 
@@ -308,9 +307,6 @@ Keep v1.0 dependencies lean; pin versions in an environment lock file when start
 - [ ] Testing/CI badges only once CI actually runs.
 - [ ] Future roadmap and a 60–90 second screen recording.
 
-**Suggested GitHub description:** `Explainable insurance claims risk analytics: supervised ML, anomaly detection, SHAP explanations, and an analyst-focused dashboard.`
-
-**Suggested CV bullet once fully completed (fill measured outcomes only):** `Built ClaimGuard AI, an end-to-end insurance claims analytics platform integrating supervised risk ranking, Isolation Forest anomaly detection, SHAP explanations, and a deployable dashboard; evaluated on [N] historical claims using [metrics] and a reproducible Python ML pipeline.`
 
 ## 12. Post-MVP improvements (optional)
 
@@ -320,13 +316,6 @@ Keep v1.0 dependencies lean; pin versions in an environment lock file when start
 4. Add an evidence-grounded LLM assistant that describes precomputed findings with citations/traceability — never invent investigations or make decisions.
 5. Add fairness and robustness audits, plus explicit model governance documentation.
 
-## 13. Starting order (no coding yet)
-
-1. Read dataset A's Kaggle documentation and licensing.
-2. Download and inspect `fraud_oracle.csv` locally.
-3. Document the target and which features are available at prediction time.
-4. Complete Week 1 EDA and data dictionary.
-5. Begin baseline ML only after the leakage review.
 
 ---
 
@@ -338,4 +327,3 @@ Keep v1.0 dependencies lean; pin versions in an environment lock file when start
 - CFPB Consumer Complaint Database: https://www.consumerfinance.gov/data-research/consumer-complaints/
 - CFPB API release notes: https://cfpb.github.io/api/ccdb/release-notes.html
 
-*Dataset metadata on third-party pages may change. Reconfirm license, access and row counts after downloading.*
