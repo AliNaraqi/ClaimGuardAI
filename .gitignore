@@ -1,8 +1,13 @@
-# Data (do not commit third-party dataset files)
+# Data — by default third-party dataset files are not committed (see
+# docs/dataset_acquisition.md). fraud_oracle.csv and its derived scored-claims
+# file are explicitly allowed below, included for the deployed demo only after
+# confirming redistribution is permitted under the dataset's Kaggle license.
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/fraud_oracle.csv
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/scored_test_claims.csv
 
 # Python
 __pycache__/
