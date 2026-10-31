@@ -61,7 +61,9 @@ uvicorn app.api.main:app --reload
 
 ## Architecture
 
-See [`docs/architecture.md`](docs/architecture.md) for the full pipeline diagram (data → features → models → explainability/anomaly → dashboard/API).
+![ClaimGuard AI architecture diagram](docs/architecture_diagram.svg)
+
+See [`docs/architecture.md`](docs/architecture.md) for the full writeup (same diagram plus a Mermaid source version and a layer-responsibility table).
 
 ## Testing & CI
 

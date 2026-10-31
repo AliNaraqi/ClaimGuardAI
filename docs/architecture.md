@@ -1,32 +1,31 @@
 # Architecture
 
+![ClaimGuard AI architecture diagram](architecture_diagram.svg)
+
+Interactive/source version (same content, Mermaid):
+
 ```mermaid
 flowchart TD
-    A[Kaggle CSV<br/>fraud_oracle.csv] -->|src/data/load.py<br/>schema validation| B[Validated raw DataFrame]
-    B -->|src/features/build_features.py<br/>engineer_features: Age sentinel fix| C[Engineered DataFrame]
-    C -->|src/models/train.py<br/>split_data: stratified 60/20/20| D1[Train]
-    C --> D2[Validation]
-    C --> D3[Test]
+    A["fraud_oracle.csv<br/>15,420 claims, 1994–96"] --> B["Prepare data<br/>validate · fix sentinels · build pipeline"]
+    B --> C["Stratified split<br/>60% train · 20% val · 20% test"]
 
-    D1 -->|ColumnTransformer fit on train only| E1[Logistic Regression]
-    D1 --> E2[XGBoost]
-    D2 -->|PR-AUC comparison| F[Model selection]
-    E1 --> F
+    C -->|train| E1["Logistic Regression<br/>baseline"]
+    C -->|train| E2["XGBoost<br/>candidate"]
+    E1 --> F["Model selection<br/>validation PR-AUC: 0.255 vs 0.154"]
     E2 --> F
-    F -->|selected_pipeline_xgboost.joblib| G[Saved model]
+    F --> G["Saved model<br/>selected_pipeline_xgboost.joblib"]
 
-    G -->|scored once| D3
-    D3 --> H[reports/model_results.json<br/>+ figures]
+    C -.->|"train features only — never sees FraudFound_P"| J["Isolation Forest<br/>anomaly score"]
 
-    G --> I[src/explainability/shap_utils.py<br/>TreeExplainer]
-    D1 -->|unsupervised, no target| J[src/anomaly/isolation_forest.py]
+    G --> T["Test evaluation<br/>scored once · PR-AUC 0.242"]
+    G --> I["SHAP<br/>explains predictions"]
+    G --> M["FastAPI /score<br/>live, single-claim scoring"]
 
-    I --> K[data/processed/scored_test_claims.csv]
+    I --> K["Scored claims<br/>risk + anomaly + SHAP reasons"]
     J --> K
 
-    K --> L[app/dashboard/app.py<br/>Streamlit: Overview, Data Quality,<br/>Model Performance, Investigation Queue]
-    G --> M[app/api/main.py<br/>FastAPI: /health, /score]
-    H --> L
+    K --> L["Streamlit dashboard<br/>analyst queue + explanations"]
+    T --> L
 ```
 
 ## Boundary
